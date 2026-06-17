@@ -1,0 +1,34 @@
+name: Run Python Project
+
+# 1. Define what triggers the workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows you to click a "Run workflow" button manually
+
+jobs:
+  execute-python:
+    # 2. Choose the operating system runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # 3. Pull your repository code onto the runner
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 4. Initialize the Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10.6 ' # Specify your preferred version
+
+      # 5. Run the main application script
+      - name: Run Application
+        working-directory: ./app
+        run: python -m http.server 8080
+
+      # 6. Run the test script
+      - name: Run Playwright
+        run: pytest
