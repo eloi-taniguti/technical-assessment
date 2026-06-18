@@ -9,7 +9,7 @@ from pages.data_issues import DataIssuesPage
 @pytest.fixture(scope='function', autouse=True)
 def before_each(page: Page):
     dashboard = Dashboard(page)
-    page.goto('http://localhost:8080/index.html')
+    page.goto('/index.html')
 
     # Welcome modal is displayed.
     expect(dashboard.welcome_modal).to_be_visible()
