@@ -14,5 +14,3 @@ class Dashboard:
     def navigate_to_data_issues(self):
         self.review_fix_issues_button.click()
         expect(self.page.get_by_text('Loading issues')).not_to_be_visible()
-        # TODO: Replace the fixed timeout with a more robust wait condition that ensures the Data Issues grid is fully loaded before proceeding with the tests.
-        #self.page.wait_for_timeout(500)  # Wait for the Data Issues grid to load
